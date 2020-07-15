@@ -3,15 +3,24 @@ name: dispatch workflow
 on:
   workflow_dispatch:
     inputs:
+      run_print_inputs:
+        description: 'Run the print inputs job'
+        required: true
+        default: 'false'
       logLevel:
         description: 'Log level'
         required: true
         default: 'warning'
 
 jobs:
-  printInputs:
+  helloWorld:
     runs-on: ubuntu-latest
     steps:
     - run: |
+        echo "Hello world!"
+  printInputs:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.inputs.run_print_inputs, 'true')"
+    steps:
+    - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Raw: ${{ toJson(github.event) }}"
