@@ -1,0 +1,11 @@
+name: empty dispatcher workflow
+
+on:
+  workflow_dispatch
+
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "We did an empty dispatch"
