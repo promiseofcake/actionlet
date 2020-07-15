@@ -1,4 +1,4 @@
-name: sample workflow
+name: dispatch workflow
 
 on:
   workflow_dispatch:
@@ -14,3 +14,4 @@ jobs:
     steps:
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Raw: ${{ toJson(github.event) }}"
