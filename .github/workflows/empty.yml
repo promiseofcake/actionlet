@@ -1,12 +1,7 @@
 name: empty dispatcher workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      fooBar:
-        description: 'fooBarTime'
-        required: true
-        default: 'now'
+  workflow_dispatch
 
 jobs:
   emptyWriter:
