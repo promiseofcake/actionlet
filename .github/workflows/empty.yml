@@ -1,11 +1,16 @@
 name: empty dispatcher workflow
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      fooBar:
+        description: 'fooBarTime'
+        required: true
+        default: 'now'
 
 jobs:
   emptyWriter:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "We did an empty dispatch"
+        echo "We did an empty dispatch, but we might do foobar time"
