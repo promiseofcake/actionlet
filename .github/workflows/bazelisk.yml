@@ -1,0 +1,28 @@
+name: install bazelisk
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  instal-bazelisk:
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: define bazelisk installer os
+        run: |
+          UNAME=$(uname)
+          echo "::set-env name=BAZEL_OS::${UNAME,,}"
+      - name: Checkout Bazelisk action
+        uses: actions/checkout@v2
+        with:
+          repository: vsco/bazelisk-action
+          path: ./.github/actions/bazelisk-action
+      - name: Setup Bazelisk
+        uses: ./.github/actions/bazelisk-action
+        with:
+          os: ${{ env.BAZEL_OS }}

@@ -4,8 +4,10 @@ on:
   workflow_dispatch
 
 jobs:
-  emptyWriter:
-    runs-on: ubuntu-latest
+  install-bazelisk:
+    strategy:
+      matrix:
+        os: ["${{ env.BAZEL_ACTIVE_OS }}", "macos-latest"]
+    runs-on: ${{ matrix.os }}
     steps:
-    - run: |
-        echo "We did an empty dispatch, but we might do foobar time"
+      - uses: actions/checkout@v2
