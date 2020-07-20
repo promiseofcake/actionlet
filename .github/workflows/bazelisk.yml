@@ -27,3 +27,5 @@ jobs:
         uses: ./.github/actions/bazelisk-action
         with:
           os: ${{ runner.os }}
+      - name: Bazel info
+        run: bazel info
