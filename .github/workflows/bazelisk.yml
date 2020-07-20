@@ -13,16 +13,17 @@ jobs:
         os: ["ubuntu-latest", "macos-latest"]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: define bazelisk installer os
-        run: |
-          OS_NAME=$(uname | tr '[:upper:]' '[:lower:]')
-          echo "::set-env name=BAZEL_OS::${OS_NAME}"
+      # - name: define bazelisk installer os
+      #   run: |
+      #     OS_NAME=$(uname | tr '[:upper:]' '[:lower:]')
+      #     echo "::set-env name=BAZEL_OS::${OS_NAME}"
       - name: Checkout Bazelisk action
         uses: actions/checkout@v2
         with:
-          repository: vsco/bazelisk-action
+          repository: promiseofcake/bazelisk-action
           path: ./.github/actions/bazelisk-action
+          ref: 'ljk/improve-inputs'
       - name: Setup Bazelisk
         uses: ./.github/actions/bazelisk-action
         with:
-          os: ${{ env.BAZEL_OS }}
+          os: ${{ runner.os }}
