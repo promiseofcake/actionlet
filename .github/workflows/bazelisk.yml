@@ -19,7 +19,8 @@ jobs:
         with:
           repository: promiseofcake/bazelisk-action
           path: ./.github/actions/bazelisk-action
-          ref: 'ljk/improve-inputs'
+          # ljk/improve-inputs
+          ref: 'f61ea5fb8e0a01b6432e3c469e2597f3f534f486'
       - name: Setup Bazelisk
         uses: ./.github/actions/bazelisk-action
         with:
