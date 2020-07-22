@@ -10,3 +10,5 @@ jobs:
     steps:
       - name: Capture triggering branch name
         run: echo "::set-env name=BRANCH_NAME::${GITHUB_REF#refs/heads/}"
+      - name: Output triggering branch name
+        run: echo "$BRANCH_NAME"
