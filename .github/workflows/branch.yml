@@ -1,0 +1,12 @@
+name: dispatch on certain branches
+
+on:
+  workflow_dispatch
+
+jobs:
+  trigger-release:
+    runs-on: ubuntu-latest
+    if: "endsWith(github.ref, '-distribute') || endsWith(github.ref, '-release')"
+    steps:
+      - name: Capture triggering branch name
+        run: echo "::set-env name=BRANCH_NAME::${GITHUB_REF#refs/heads/}"
