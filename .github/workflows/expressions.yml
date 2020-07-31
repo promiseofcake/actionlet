@@ -15,4 +15,4 @@ jobs:
       BAZ: baz
     steps:
     - run: |
-        echo ${{ format('\{"foo": "{0}", "bar": "{1}", "baz": "{2}"\}', env.FOO, env.BAR, env.BAZ) }}
+        echo '{${{ format(\'"foo": "{0}", "bar": "{1}", "baz": "{2}"\', env.FOO, env.BAR, env.BAZ) }}}'
